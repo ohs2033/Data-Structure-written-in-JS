@@ -5,7 +5,7 @@ function LinkedList(newValue){
 
 LinkedList.prototype.add=function(newValue){
 	if(newValue===undefined) throw new Error("no input value.")
-	else{	
+	else{
 		if(this.val){
 			if(this.nextNode){
 				this.nextNode.add(newValue);
