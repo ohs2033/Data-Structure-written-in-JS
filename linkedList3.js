@@ -89,6 +89,20 @@ LinkedList.prototype.reverseByIteation=function(){
  	}
  	reverse(current,before); 
  }
+LinkedList.prototype.reverseByRecursion2 = function(){
+ 	var node = this.head;
+ 	var list = this;
+ 	function reverse(node){
+ 		if(node.next===null){
+ 			list.head = node;
+ 			return;
+ 		}
+ 			reverse(node.next);
+ 			node.next.next = node;
+ 			node.next=null;
+ 	}
+ 	reverse(node);
+ }
 	
 LinkedList.prototype.print=function(){
 	console.log('-----start-----')
@@ -98,7 +112,7 @@ LinkedList.prototype.print=function(){
 		if(current===this.head)
 		{ console.log('head is : ' + current.val)
 		}else{
-		console.log(number+'th value is ' + current.val)	
+		console.log(this.numberOfValues-number+'th node\'s value is ' + current.val)	
 		}
 		number--;
 		current=current.next
@@ -126,13 +140,12 @@ a.add(3);
 a.add(4);
 a.add(5);
 a.reversePrint();
-
 a.print();
 for(var i =6; i<100;i++){
 	a.add(i);
 }
-a.reverseByRecursion();
+a.reverseByRecursion2();
 b.add(1);
-a.print();
+
 b.reverseByIteation();
 c.reverseByIteation();
