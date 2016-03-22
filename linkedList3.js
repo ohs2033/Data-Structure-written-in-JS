@@ -59,14 +59,48 @@ LinkedList.prototype.insertAfter=function(data, toNodeData){
 	}
 }
 
+LinkedList.prototype.reverseByIteation=function(){
+ 	var current;
+ 	var temp = this.head;
+ 	this.head= null;
+ 	while(temp){
+ 		current = temp;
+ 		temp = current.next
+ 		current.next = this.head;
+ 		this.head = current;
+ 	}
+	
+}
+LinkedList.prototype.print=function(){
+	console.log('-----start-----')
+	var current = this.head;
+	var number = this.numberOfValues
+	while(current){
+		if(current===this.head)
+		{ console.log('head is : ' + current.val)
+		}else{
+		console.log(number+'th value is ' + current.val)	
+		}
+		number--;
+		current=current.next
+	}
+	console.log('------end------');
+}
+
 
 
 
 var a = new LinkedList();
+var b = new LinkedList();
+var c = new LinkedList();
 a.add(3);
 a.add(4);
 a.add(5);
-console.log(a);
-a.remove(4);
-a.insertAfter(5);
-console.log(a);
+a.print();
+b.add(1);
+a.reverseByIteation();
+a.reverseByIteation();
+c.reverseByIteation();
+a.print();
+b.print();
+c.print();
