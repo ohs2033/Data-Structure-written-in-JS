@@ -87,20 +87,30 @@ LinkedList.prototype.print=function(){
 	console.log('------end------');
 }
 
+LinkedList.prototype.reversePrint=function(){
+	var current = this.head;
+	function recursivePrint(node){
+		if(node.next) recursivePrint(node.next);
+		console.log(node.val);
+	}
+	recursivePrint(current);
+}
 
 
 
 var a = new LinkedList();
 var b = new LinkedList();
 var c = new LinkedList();
+a.add(1);
+a.add(2);
 a.add(3);
 a.add(4);
 a.add(5);
-a.print();
+a.reversePrint();
+for(var i =6; i<51;i++){
+	a.add(i);
+}
 b.add(1);
 a.reverseByIteation();
-a.reverseByIteation();
+b.reverseByIteation();
 c.reverseByIteation();
-a.print();
-b.print();
-c.print();
