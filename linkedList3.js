@@ -69,8 +69,27 @@ LinkedList.prototype.reverseByIteation=function(){
  		current.next = this.head;
  		this.head = current;
  	}
-	
 }
+ LinkedList.prototype.reverseByRecursion = function(){
+ 	var current = this.head;
+ 	var before = this.head;
+ 	var list = this;
+ 	function reverse(node,nodeBefore){
+ 		if(node===nodeBefore){
+ 			reverse(node.next,nodeBefore);
+ 			node.next=null;
+ 		}else{
+	 		if(node.next){
+	 			reverse(node.next,nodeBefore.next);
+	 		}else{
+	 			list.head=node;
+	 		}
+	 	node.next = nodeBefore;
+ 		}
+ 	}
+ 	reverse(current,before); 
+ }
+	
 LinkedList.prototype.print=function(){
 	console.log('-----start-----')
 	var current = this.head;
@@ -107,10 +126,13 @@ a.add(3);
 a.add(4);
 a.add(5);
 a.reversePrint();
-for(var i =6; i<51;i++){
+
+a.print();
+for(var i =6; i<100;i++){
 	a.add(i);
 }
+a.reverseByRecursion();
 b.add(1);
-a.reverseByIteation();
+a.print();
 b.reverseByIteation();
 c.reverseByIteation();
