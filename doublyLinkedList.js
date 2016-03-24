@@ -25,8 +25,9 @@ DoublyLinkedList.prototype.add = function(data){
 
 }
 DoublyLinkedList.prototype.remove = function(data){
+	if(!this.head) return ;
 	var current = this.head;
-	if(current){
+
 		while(current){
 			if(current.val===data){
 				if(current.previous){
@@ -42,7 +43,7 @@ DoublyLinkedList.prototype.remove = function(data){
 			}
 		current=current.next
 		}
-	}
+
 
 }
 DoublyLinkedList.prototype.insertAfter = function(nth,data){

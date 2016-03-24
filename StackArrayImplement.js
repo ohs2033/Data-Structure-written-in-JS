@@ -9,6 +9,7 @@ function Stack(){
 
 Stack.prototype.push= function(data){
 	if(this.top === this.arr.length-1){
+		//re-sizing Array. 
 		console.log('Stack is getting bigger...')
 		var newArr = new Array(this.arr.length)
 		this.arr= this.arr.concat(newArr);
