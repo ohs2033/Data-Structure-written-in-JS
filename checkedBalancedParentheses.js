@@ -2,12 +2,22 @@ var CheckForBalancedParentheses = function(string){
 	var balance  = new Stack();
 	for(var i =0; i <string.length; i ++){
 		if(string[i]==='('||string[i]==='['||string[i]==='{') balance.push(string[i]);
-		if(string[i]===')'&& balance.top1()==='(') balance.pop();
-		if(string[i]==='}'&& balance.top1()==='{') balance.pop();
-		if(string[i]===']'&& balance.top1()==='[') balance.pop(); 	
+		if(string[i]===')'||string[i]===']'||string[i]==='}'){
+			if (balance.top1()===null) return false;
+			else if(isPair(string[i],balance.top1())){
+				 balance.pop();
+			}
+		}
 	}	
-	if (balance.top ===null) return true;
+	if (balance.top === null) return true;
 	console.log(balance)
+	return false;
+}
+
+function isPair(a,b){
+	if(a===')'&&b==='(') return true;
+	if(a==='}'&&b==='{') return true;
+	if(a===']'&&b==='[') return true;
 	return false;
 }
 
@@ -54,5 +64,4 @@ a.push(3);
 a.pop();
 console.log(a.top1());
 
-console.log(CheckForBalancedParentheses('Stack.prototype.top1 = function(){return this.top? this.top.val:null;}Stack.prototype.isEmpty = function(){	if(this.top){		return false;	}	return true;}'));
-
+console.log(CheckForBalancedParentheses('{}'));
