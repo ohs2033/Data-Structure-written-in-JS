@@ -56,6 +56,9 @@ BinaryTree.prototype.findChildren= function(index){
 	return [this.array[childrenIndex1],this.array[childrenindex2]]
 
 }
+
+
+
 BinaryTree.prototype.print = function(index){
 	var level = this.findLevel();
 	var eachLine = '';
